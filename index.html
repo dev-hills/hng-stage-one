@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>HNG Stage 1 task</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="heading">
+        <h1 data-testid="slackUserName">hills.dev</h1>
+        <img
+          src="./images/slackPicture.jpeg"
+          alt="hills.dev"
+          data-testid="slackDisplayImage"
+        />
+      </div>
+
+      <div class="body">
+        <ul>
+          <li data-testid="currentDayOfTheWeek">
+            Current Day of the Week: <span id="day"></span>
+          </li>
+          <li data-testid="currentUTCTime">
+            Current UTC Time: <span id="time"></span>
+          </li>
+          <li data-testid="myTrack">Track: Frontend Track</li>
+          <li data-testid="githubURL">
+            <a href="https://github.com/dev-hills" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    function DateandTime() {
+      const now = new Date();
+
+      const dayOfWeek = now.getUTCDay();
+      const daysOfWeek = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      const currentDayOfWeek = daysOfWeek[dayOfWeek];
+
+      const currentUTCTime = now.getTime();
+
+      document.getElementById("day").textContent = currentDayOfWeek;
+      document.getElementById("time").textContent = currentUTCTime;
+    }
+
+    window.onload = function () {
+      DateandTime();
+
+      setInterval(DateandTime, 1000);
+    };
+  </script>
+</html>
